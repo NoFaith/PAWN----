@@ -1,9 +1,11 @@
 #include <a_samp>
 #include <sscanf>
 #include <zcmd>
+#include <dini>
 // feel free to edit this FS as you want, but dont remove the credits !! <3
 #define    COLOR_ERROR                0xFF0000AA
 #define COLOR_YELLOW           0xFFFF00AA
+#define 		green 					0x33FF33AA
 /*
 M A D E   B Y    wuzue, you can find me on Skype: renan.araujo279 or mail me: burzuned@gmail.com
 github.com/wuzue
@@ -50,3 +52,12 @@ CMD:ssongtoall(playerid, params[])
     SendClientMessage(playerid, COLOR_YELLOW, string);
     return 1;
 }
+
+CMD:clearchat(playerid, params[])
+{
+	if(PlayerInfo[playerid][Level] < 1)
+	    return SendClientMessage(playerid,red,"ERROR: You are not allowed to use this command");
+
+	CMDMessageToAdmins(playerid, "CLEARCHAT");
+	for(new i = 0; i < 100; i++) SendClientMessageToAll(green," ");
+	return 1;
